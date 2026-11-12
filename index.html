@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Pet Feeder – State Model</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Smart Pet Feeder &amp; Water Dispenser</h1>
+  <p class="sub">A state-machine model. Food every 5 hours, water every 2 hours, half food portion before 9 a.m.</p>
+
+  <section class="panel">
+    <div class="status">
+      <div id="badge" data-state="Ready">Ready</div>
+      <div id="message">Waiting for a schedule or a command.</div>
+      <div id="clock">06:00</div>
+    </div>
+  </section>
+
+  <section class="panel bowls">
+    <div>
+      <h2>Food container</h2>
+      <div class="meter"><div id="foodFill"></div></div>
+      <small id="foodText"></small><br>
+      <small id="lastFedText"></small>
+    </div>
+    <div>
+      <h2>Water container</h2>
+      <div class="meter"><div id="waterFill"></div></div>
+      <small id="waterText"></small><br>
+      <small id="lastWaterText"></small>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Phone controls</h2>
+    <div class="row">
+      <button id="feedBtn">Feed</button>
+      <button id="waterBtn">Add water</button>
+      <button id="pauseBtn">Pause schedule</button>
+      <button id="resumeBtn">Resume schedule</button>
+      <button id="refillBtn">Refill / clear problem</button>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Simulation controls</h2>
+    <div class="row">
+      <button id="hourBtn">Advance 1 hour</button>
+      <button id="autoBtn">Auto-run time: off</button>
+      <label><input type="checkbox" id="blockedBox"> Dispenser blocked</label>
+    </div>
+    <p><small>Time is simulated so you can test the schedule quickly. Portion rule: before 9:00 = half portion.</small></p>
+  </section>
+
+  <section class="panel">
+    <h2>Event log</h2>
+    <ul id="log"></ul>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

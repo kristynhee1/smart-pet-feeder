@@ -1,0 +1,41 @@
+:root {
+  --bg: #f3f6f4; --panel: #ffffff; --ink: #1d2b27; --muted: #5d6f69; --line: #cfdad5;
+  --ready: #2f7d5b; --food: #c27a1a; --water: #2a73b8; --alert: #b83a3a; --paused: #6b6f8a;
+  --bar: #e3ebe7;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #14201c; --panel: #1c2c27; --ink: #e8f0ec; --muted: #9db2aa; --line: #34493f;
+    --ready: #5cc196; --food: #e8a54a; --water: #6fb0ee; --alert: #ee7777; --paused: #a3a7c8; --bar: #2a3d36; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px 16px 40px; background: var(--bg); color: var(--ink);
+  font: 16px/1.5 Georgia, "Times New Roman", serif; }
+main { max-width: 760px; margin: 0 auto; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+p.sub { margin: 0 0 20px; color: var(--muted); }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+h2 { font-size: 1rem; margin: 0 0 10px; }
+.status { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+#badge { font: 700 1.3rem/1 system-ui, sans-serif; padding: 12px 18px; border-radius: 8px; color: #fff;
+  background: var(--ready); transition: background .25s; }
+#badge[data-state="DispensingFood"] { background: var(--food); }
+#badge[data-state="DispensingWater"] { background: var(--water); }
+#badge[data-state="NeedsAttention"] { background: var(--alert); }
+#badge[data-state="Paused"] { background: var(--paused); }
+#message { flex: 1; min-width: 200px; }
+#clock { font: 600 1.1rem system-ui, sans-serif; margin-left: auto; }
+.bowls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.meter { height: 16px; background: var(--bar); border-radius: 8px; overflow: hidden; margin: 6px 0; }
+.meter > div { height: 100%; transition: width .4s; }
+#foodFill { background: var(--food); } #waterFill { background: var(--water); }
+small { color: var(--muted); font-family: system-ui, sans-serif; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+button { font: 600 .95rem system-ui, sans-serif; padding: 9px 14px; border-radius: 7px; cursor: pointer;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
+button:hover:not(:disabled) { border-color: var(--ink); }
+button:focus-visible, input:focus-visible { outline: 3px solid var(--water); outline-offset: 2px; }
+button:disabled { opacity: .4; cursor: not-allowed; }
+label { font-family: system-ui, sans-serif; font-size: .95rem; }
+#log { list-style: none; margin: 0; padding: 0; max-height: 220px; overflow-y: auto; font: .9rem/1.6 system-ui, sans-serif; }
+#log li { border-bottom: 1px solid var(--line); padding: 3px 0; }
+@media (max-width: 520px) { .bowls { grid-template-columns: 1fr; } #clock { margin-left: 0; } }
